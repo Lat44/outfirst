@@ -1,16 +1,37 @@
 import { Module } from "@nestjs/common";
+import { PostModule } from "./post/post.module";
+import { UserModule } from "./user/user.module";
+import { CommentModule } from "./comment/comment.module";
+import { AuthorModule } from "./author/author.module";
+import { PageModule } from "./page/page.module";
+import { VesselModule } from "./vessel/vessel.module";
+import { CategoryModule } from "./category/category.module";
 import { HealthModule } from "./health/health.module";
 import { PrismaModule } from "./prisma/prisma.module";
 import { SecretsManagerModule } from "./providers/secrets/secretsManager.module";
+import { StorageModule } from "./storage/storage.module";
 import { ServeStaticModule } from "@nestjs/serve-static";
 import { ServeStaticOptionsService } from "./serveStaticOptions.service";
 import { ConfigModule, ConfigService } from "@nestjs/config";
 import { GraphQLModule } from "@nestjs/graphql";
 import { ApolloDriver, ApolloDriverConfig } from "@nestjs/apollo";
 
+import { ACLModule } from "./auth/acl.module";
+import { AuthModule } from "./auth/auth.module";
+
 @Module({
   controllers: [],
   imports: [
+    StorageModule,
+    ACLModule,
+    AuthModule,
+    PostModule,
+    UserModule,
+    CommentModule,
+    AuthorModule,
+    PageModule,
+    VesselModule,
+    CategoryModule,
     HealthModule,
     PrismaModule,
     SecretsManagerModule,
